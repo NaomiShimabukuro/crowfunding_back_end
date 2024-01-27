@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from .models import Project
 
-class PledgeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pledge
-        fields = ['id', 'amount', 'comment', 'anonymous', 'project', 'supporter',]
-        read_only_fields = ['id', 'supporter']
+# class PledgeSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Pledge
+#         fields = ['id', 'amount', 'comment', 'anonymous', 'project', 'supporter',]
+#         read_only_fields = ['id', 'supporter']
 
         # model = Project       
         # fields ='__all__'
@@ -18,7 +18,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     image = serializers.URLField()
     is_open = serializers.BooleanField()
     date_created = serializers.DateTimeField()
-    owner = serializers.ReadOnlyField(source='owner_id')
+    owner = serializers.CharField(max_length=200)
 
     def create(self, validated_data):
         return Project.objects.create(**validated_data)
@@ -34,5 +34,5 @@ class ProjectSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
-class ProjectDetailSerializer(ProjectSerializer):
-    pledges = PledgeSerializer(many=True, read_only=True)
+# class ProjectDetailSerializer(ProjectSerializer):
+#     pledges = PledgeSerializer(many=True, read_only=True)

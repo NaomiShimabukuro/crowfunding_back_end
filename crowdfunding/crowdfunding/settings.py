@@ -34,9 +34,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'projects.apps.ProjectsConfig',
     'rest_framework',
-    'django_filters',
-    'rest_framework.authtoken',
-    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -138,7 +135,7 @@ REST_FRAMEWORK = {
            'rest_framework.authentication.TokenAuthentication',
     	   'rest_framework.authentication.SessionAuthentication',
     ],
-    'DEFAULT_FILTER_BACKENDS': [
-            'django_filters.rest_framework.DjangoFilterBackend',
-    ]
+    # 'DEFAULT_FILTER_BACKENDS': [
+    #         'django_filters.rest_framework.DjangoFilterBackend',
+    # ]
 }
